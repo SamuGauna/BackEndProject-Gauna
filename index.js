@@ -1,4 +1,5 @@
 
+
 class ProductManager {
     constructor (title, description, price, thumbnail, code, stock){
         this.title = title;
@@ -7,36 +8,37 @@ class ProductManager {
         this.thumbnail = thumbnail;
         this.code = code;
         this.stock = stock;
+        this.products = []
     }
-    get getProducts(){
-        return products = [];
-    }
-    addProduct(id){
-        if (this.code === 1) {
-            products.push(product1)
-        } else if (this.code === 2) {
-            products.push(product2)
-        } else {
-            products.push(product3)
-        }
+    static id = 0 
+
+    getProducts(){
+        console.log(this.products);
+        return this.products
         
     }
-    set getProductById(id){
-        if (this.code === id) {
-            console.log('El producto fue agregado');
+    addProduct(){
+        this.products.push(this.title, this.description, this.price, this.thumbnail, this.code, this.stock)
+        ProductManager.id++       
+    }
+    getProductById(id){
+        if (this.products.includes(id)) {
+            console.log(...this.products)
         } else {
-            console.error('Not Found');
+            console.log("Not found")
         }
     }
-   
 
 }
 
-let product1 = new ProductManager('Escoba', 'Semi nueva', 77, 'https://http2.mlstatic.com/D_NQ_NP_2X_780827-MLA52027354635_102022-F.webp', 1, 5);
-let product2 = new ProductManager('Mopa', 'Nueva', 88, 'https://http2.mlstatic.com/D_NQ_NP_2X_724551-MLA32041668736_092019-F.webp', 2, 7 );
-let product3 = new ProductManager('Secador de piso', 'Un solo uso', 99, 'https://http2.mlstatic.com/D_NQ_NP_2X_775191-MLA53364171913_012023-F.webp', 3, 2);
-console.log(products)
-product2.addProduct();
-// el metodo set nos va a agregar un valor a una variable o propiedad
+let product1 = new ProductManager('Escoba', 'Semi nueva', 77, 'https://http2.mlstatic.com/D_NQ_NP_2X_780827-MLA52027354635_102022-F.webp', "1a", 5);
+let product2 = new ProductManager('Mopa', 'Nueva', 88, 'https://http2.mlstatic.com/D_NQ_NP_2X_724551-MLA32041668736_092019-F.webp', "2b", 7 );
+let product3 = new ProductManager('Secador de piso', 'Un solo uso', 99, 'https://http2.mlstatic.com/D_NQ_NP_2X_775191-MLA53364171913_012023-F.webp', "3c", 2);
 
-// el metodo get nos va a devolver el valor de esta propiedad
+product1.addProduct()
+product2.addProduct()
+
+product1.getProductById("1a")
+product1.getProducts()
+
+
